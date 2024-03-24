@@ -1,0 +1,17 @@
+[
+  {
+    "directory": "/home/cameron/coding/personal/C/adventofcode/",
+    "command": "gcc -Wall -std=c99 ./src/*.c -I./include/ -o ./bin/collections",
+    "file": "./src/collections.c"
+  },
+  {
+    "directory": "/home/cameron/coding/personal/C/adventofcode/",
+    "command": "gcc -Wall -std=c99 ./src/*.c -I./include/ -o ./bin/fileio",
+    "file": "./src/fileio.c"
+  },
+  {
+    "directory": "/home/cameron/coding/personal/C/adventofcode/",
+    "command": "gcc -Wall -std=c99 ./src/*.c -I./include/ ./2023/day/1/main.c -o ./2023/day/1/main",
+    "file": "./2023/day/1/main.c"
+  }
+]
