@@ -3,6 +3,7 @@
 #include <collections.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 void initList(List *l, int initSize) {
   l->list = (char *)malloc(initSize * sizeof(char));
@@ -51,15 +52,45 @@ void printList(List *l) {
   fprintf(stdout, "\n");
 }
 
+int cmpstr(char *str, const char *sub) {
+  if (!str || !sub) {
+    return -1;
+  }
+  if (strlen(str) < strlen(sub)) {
+    return -1;
+  }
+  while (*str && *sub) {
+    if (*str != *sub) {
+      return -1;
+    }
+    sub++, str++;
+  }
+  return 1;
+}
+
+char *tokenizeStr(char *str, const char *delim) {  // destructive
+  // FIXME (cameron): currently overflows
+  static int i = 0;
+  if (*str == *delim) {
+    i++;
+  }
+  char *token = str + i;
+  while (cmpstr(str + i, delim) != 1 && *(str + i) != '\0') {
+    i++;
+  }
+  str[i] = '\0';
+  return token;
+}
+
 int testCollections() {
-  List  test1;
+  List test1;
   List *test1_ptr = &test1;
   initList(test1_ptr, 1);
   appendList(test1_ptr, 'a');
   appendList(test1_ptr, 'b');
   appendList(test1_ptr, 'c');
 
-  List  test2;
+  List test2;
   List *test2_ptr = &test2;
   initList(test2_ptr, 2);
 
