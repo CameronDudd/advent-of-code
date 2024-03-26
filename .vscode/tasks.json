@@ -8,7 +8,7 @@
     {
       "label": "build_file",
       "type": "shell",
-      "command": "gcc -g -Wall -std=c99 -I${workspaceFolder}/include/ ${workspaceFolder}/src/*.c -o ./bin/${fileBasenameNoExtension}"
+      "command": "gcc -g -Wall -std=c99 -I${workspaceFolder}/include/ ${workspaceFolder}/src/*.c ${file} -o ./bin/${fileBasenameNoExtension}"
     }
   ]
 }
