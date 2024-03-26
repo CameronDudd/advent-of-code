@@ -5,7 +5,7 @@
 
 #include "./collections.h"
 
-extern void readlines(char *filename, List linsbuffer);
+extern void readlines(char *filename, List *buff);
 extern void testFileIO();
 
 #endif /* FILEIO_H */
