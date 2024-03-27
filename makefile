@@ -12,5 +12,5 @@ collections:
 fileio:
 	$(GCCPREFIX) -o $(OUT)/fileio
 
-aoc:  # just day 1 for now; TODO: configure days
-	$(GCCPREFIX) ./2023/day/1/main.c -o $(OUT)/2023-day-1
+main:
+	$(GCCPREFIX) ./aoc/2015/day/1/main.c -o $(OUT)/main
