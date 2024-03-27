@@ -14,8 +14,8 @@ void readlines(char *filename, List *buff) {
   }
 
   // read the file
-  int  bytesRead = 0;
-  char ch        = EOF;
+  int bytesRead = 0;
+  char ch = EOF;
   do {
     while ((bytesRead = read(fd, &ch, 1)) > 0) {
       appendList(buff, ch);
