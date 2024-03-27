@@ -19,7 +19,7 @@ void part1(char *filename) {
     }
   } while (bytesRead != 0);
   close(fd);
-  fprintf(stdout, "%i\n", c);
+  fprintf(stdout, "Part 1: %i\n", c);
 }
 
 void part2(char *filename) {
@@ -42,8 +42,8 @@ void part2(char *filename) {
     }
   } while (bytesRead != 0);
   close(fd);
-  fprintf(stdout, "%i\n", c);
-  fprintf(stdout, "%i\n", totalBytesRead);
+  fprintf(stdout, "Part 2: %i\n", totalBytesRead);
+  fprintf(stdout, "c: %i\n", c);
 }
 
 int main() {
