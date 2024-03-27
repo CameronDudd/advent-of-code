@@ -94,11 +94,9 @@ int char2int(char *str) { return (int)(*str - '0'); }
  */
 int str2int(char *str) {  // FIXME: will overflow
   int total = 0;
-  while (*(str + 1) != '\0') {
-    total += char2int(str++);
-    total *= 10;
+  while (*str != '\0') {
+    total = (total * 10) + (int)(*str++ - '0');
   }
-  total += char2int(str++);
   return total;
 }
 
