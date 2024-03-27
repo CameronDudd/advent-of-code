@@ -7,12 +7,6 @@
 #include <stdio.h>
 #include <unistd.h>
 
-struct line {
-  int length;
-  int width;
-  int height;
-};
-
 void part1(char *filename) {
   int fd = open(filename, O_RDONLY);
   int bytes_read = -1;
@@ -22,25 +16,51 @@ void part1(char *filename) {
   // 2. process the buffer, split on delim 'x'
   // 3. add 2(lw + wh + hl) to total
   // 4. return total
-  char l[4];
-  char w[4];
-  char h[4];
+
+  int il;
+  int iw;
+  int ih;
+  int len = 5;
+  char l[] = {'\0' * len};
+  char w[] = {'\0' * len};
+  char h[] = {'\0' * len};
+  int cur_char = 0;
   int seen_delim = 0;
+  int total = 0;
+
   while (bytes_read != 0) {
     bytes_read = read(fd, &ch, 1);
-    if (ch == 'x') {
+
+    // check current char for x or newline
+    if (ch == 'x' || ch == '\n') {
+      cur_char = 0;
       seen_delim++;
+      continue;
     }
-    switch (seen_delim % 3) {
+
+    // write to correct buff
+    switch (seen_delim % 4) {
       case 0:
-        return;
+        l[cur_char] = ch;
+        cur_char++;
+        break;
       case 1:
-        return;
+        w[cur_char] = ch;
+        cur_char++;
+        break;
       case 2:
-        return;
+        h[cur_char] = ch;
+        cur_char++;
+        break;
+      case 3:
+        il = str2int(l);
+        iw = str2int(w);
+        ih = str2int(h);
+        // total = total + (2 * ((il * iw) + (iw * ih) + (ih * il)));
+        break;
     }
-    fprintf(stdout, "%s", tmp);
   }
+  fprintf(stdout, "%i", total);
   close(fd);
 }
 
