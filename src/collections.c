@@ -82,6 +82,26 @@ char *tokenizeStr(char *str, const char *delim) {  // destructive
   return token;
 }
 
+int char2int(char *str) { return (int)(*str - '0'); }
+
+/* Example
+ * 12345
+ * 1E4 + 2E3 + 3E2 + 4E1 + 5E0
+ * (1E3 + 2E2 + 3E1 + 4) * 10 + 5
+ * (1E2 + 2E1 + 3) * 10 + 4) * 10 + 5
+ * (1E1 + 2) * 10 + 3) * 10 + 4) * 10 + 5
+ * (1 * 10) + 2) * 10) + 3) * 10) + 4) * 10) + 5
+ */
+int str2int(char *str) {  // FIXME: will overflow
+  int total = 0;
+  while (*(str + 1) != '\0') {
+    total += char2int(str++);
+    total *= 10;
+  }
+  total += char2int(str++);
+  return total;
+}
+
 int testCollections() {
   List test1;
   List *test1_ptr = &test1;

@@ -16,6 +16,8 @@ extern void printList(List *l);
 extern void freeList(List *l);
 extern int cmpstr(char *str, const char *sub);
 extern char *tokenizeStr(char *str, const char *delim);
+extern int char2int(char *str);
+extern int str2int(char *str);
 extern int testCollections();
 
 #endif /* COLLECTIONS_H */
