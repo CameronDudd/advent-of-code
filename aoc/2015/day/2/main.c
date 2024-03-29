@@ -48,8 +48,6 @@ void part1(char *filename) {
       int lh = il * ih;
       int wh = iw * ih;
       slack = min(lw, min(lh, wh));  // find smallest side for slack
-
-      // DEBUG: fprintf(stdout, "%i x %i x %i\n", il, iw, ih);
       total += 2 * (lw + lh + wh) + slack;
 
       // reset
@@ -112,9 +110,7 @@ void part2(char *filename) {
       int ribbonLength = 2 * (min1 + min2);
       int bowLength = il * iw * ih;
 
-      // DEBUG: fprintf(stdout, "%i x %i x %i\n", il, iw, ih);
-      fprintf(stdout, "%i x %i x %i: %i length; %i bow\n", il, iw, ih,
-              ribbonLength, bowLength);
+      fprintf(stdout, "%i x %i x %i\n", il, iw, ih);
       total += ribbonLength + bowLength;
 
       // reset
